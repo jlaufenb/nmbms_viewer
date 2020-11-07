@@ -113,11 +113,11 @@ server <- function(input, output, session) {
     dat.tbl <- reactive({
         req(input$file)
         dat() %>%
-            group_by("Transect ID" = id,
-                     "Source file" = sourcefile) %>%
+            group_by("Survey ID" = id) %>%
             summarise(
-                "Transect" = transect,
-                "Survey date" = date)
+                "Transect" = first(transect),
+                "Survey date" = first(date),
+                "Source file" = first(sourcefile))
     })
 
     # Create a DT table of the summarized data
