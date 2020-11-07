@@ -55,7 +55,7 @@ nmbms_map <- function(nmbms) {
   for (i in seq_along(ids)) {
     d <- df %>% filter(id == ids[i])
     dp <- d[c(1, nrow(d)), ]
-    dp$endpoints <- c("START","END")
+    dp$endpoints <- c("START","STOP")
     map <- addPolylines(map, lng = d$lon, lat = d$lat,
                         weight = 1,
                         color = pal[i],
